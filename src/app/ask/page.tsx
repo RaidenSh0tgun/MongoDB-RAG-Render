@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <div>
       <div
-        style={{height: '40vh', flexDirection: "column-reverse", display: "flex" }}
+        style={{height: '30vh', flexDirection: "column-reverse", display: "flex" }}
       >
         <>
           {waitingForAI &&
@@ -61,7 +61,7 @@ export default function Home() {
             <input
               value={input}
               onChange={handleInputChange}
-              className="flex h-20 w-full rounded-md border border-[#e5e7eb] px-6 py-3 text-sm placeholder-[#6b7280] focus:outline-none focus:ring-2 focus:ring-[#9ca3af] disabled:cursor-not-allowed disabled:opacity-50 text-[#030712] focus-visible:ring-offset-2"
+              className="flex h-20 w-full rounded-md border border-[#e5e7eb] px-5 py-2 text-sm placeholder-[#6b7280] focus:outline-none focus:ring-2 focus:ring-[#9ca3af] disabled:cursor-not-allowed disabled:opacity-50 text-[#030712] focus-visible:ring-offset-2"
               placeholder="What do you want to know about Tong Chen?"
             />
             <button
