@@ -6,7 +6,7 @@ const NavBar: React.FC = () => {
   return (
     <nav style={{ backgroundColor: '#da532c', padding: '1rem' }}>
       <ol style={{ listStyleType: 'none', margin: 10, padding: 0 }}>
-        <img src='/mongoDB.svg' width={"1%"} style={{ display: 'inline', marginLeft: '1rem' }} />
+        <img src='/UNSPAA_S_RED_BLACK.png' width={"1%"} style={{ display: 'inline', marginLeft: '1rem' }} />
         <li style={{ display: 'inline', marginLeft: '5rem' }}>
           <Link href="/">
             Home
