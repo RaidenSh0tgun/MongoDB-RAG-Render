@@ -61,7 +61,7 @@ export async function POST(req: Request) {
 
         // Invoke the chain with the user's question
         const response = await qaChain.invoke({
-            question: question
+            question: question,
             context: await retriever.invoke(question),
         });
 
