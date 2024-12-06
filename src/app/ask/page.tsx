@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <div>
       <div
-        style={{height: '50vh', flexDirection: "column-reverse", display: "flex" }}
+        style={{height: '40vh', flexDirection: "column-reverse", display: "flex" }}
       >
         <>
           {waitingForAI &&
@@ -28,7 +28,7 @@ export default function Home() {
             (
               <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
                 <img style={{ width: "25%", marginBottom: "2%" }} src='/UNSPAA_S_RED_BLACK.png' />
-                <span style={{ marginBottom: '2%', fontSize: '40px', justifySelf: 'center' }}>+</span>
+                <span style={{ marginBottom: '2%', fontSize: '60px', justifySelf: 'center' }}>+</span>
                 <img style={{ width: "8%", marginBottom: "2%" }} src='/openAI.svg' />
               </div>
             )
@@ -40,10 +40,10 @@ export default function Home() {
               <span className="relative flex shrink-0 overflow-hidden rounded-full w-8 h-8" 
                     style={{ margin: '30px', marginTop: '0px' }}>
                 <div className="rounded-full bg-gray-100 border p-1">
-                  {m.role === 'user' ? (
-                    <img src="/user.png" />
+                  {m.role === 'Visitor' ? (
+                    <img src="/Fairy.png" />
                   ) : (
-                    <img src="/bot.png" />
+                    <img src="/bangboo.png" />
                   )}
                 </div>
               </span>
@@ -61,7 +61,7 @@ export default function Home() {
             <input
               value={input}
               onChange={handleInputChange}
-              className="flex h-10 w-full rounded-md border border-[#e5e7eb] px-3 py-2 text-sm placeholder-[#6b7280] focus:outline-none focus:ring-2 focus:ring-[#9ca3af] disabled:cursor-not-allowed disabled:opacity-50 text-[#030712] focus-visible:ring-offset-2"
+              className="flex h-20 w-full rounded-md border border-[#e5e7eb] px-6 py-3 text-sm placeholder-[#6b7280] focus:outline-none focus:ring-2 focus:ring-[#9ca3af] disabled:cursor-not-allowed disabled:opacity-50 text-[#030712] focus-visible:ring-offset-2"
               placeholder="What do you want to know about Tong Chen?"
             />
             <button
