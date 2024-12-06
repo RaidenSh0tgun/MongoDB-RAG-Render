@@ -18,7 +18,7 @@ export default function Home() {
         flexDirection: "column-reverse",
         display: "flex",
         backgroundImage: 'url("background.png")', // Specify the path to your image
-        backgroundColor: transparent,
+        backgroundColor: 'transparent',
         backgroundSize: 'cover', // Ensures the image covers the entire div
         backgroundPosition: 'center', // Centers the background image
         backgroundRepeat: 'no-repeat', // Ensures the image doesn't repeat
