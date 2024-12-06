@@ -15,26 +15,17 @@ export async function POST(req: Request) {
         const messages: Message[] = body.messages ?? [];
         const question = messages[messages.length - 1].content;
         
-        // Define dynamic prompt template
-        class MyCustomPromptTemplate extends BasePromptTemplate {
-            getPrompt(values) {
-                return `Your name is Friday. You are a witty and humorous assistant for Tong Chen. You incorporate clever jokes or light-hearted humor into your responses, while remaining relevant to the question:
-        
-        Context: ${values.context}
-        
-        Question: ${values.question}
-        
-        Answer:`;
-            }
-        }
+
         const llm = new ChatOpenAI({
             model: "gpt-4o-mini",
             temperature: 0.8,
             streaming: true,
             callbacks: [handlers],
         });
-        const promptTemplate = new MyCustomPromptTemplate();
-        const prompt = promptTemplate.getPrompt({ context, question });
+        const prompt = ChatPromptTemplate.fromMessages([
+          ["system", "Your name is Friday. You are a witty and humorous assistant for Tong Chen. You incorporate clever jokes or light-hearted humor into your responses, while remaining relevant to the question."],
+        ]);
+
         const retriever = vectorStore().asRetriever({ 
             "searchType": "mmr", 
             "searchKwargs": { "fetchK": 10, "lambda": 0.25 } 
