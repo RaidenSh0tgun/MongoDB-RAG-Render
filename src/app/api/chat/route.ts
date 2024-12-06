@@ -15,11 +15,12 @@ export async function POST(req: Request) {
         const question = messages[messages.length - 1].content;
 
         const model = new ChatOpenAI({
+            modelName: 'GPT-4o-mini',
             temperature: 0.8,
             streaming: true,
             callbacks: [handlers],
         });
-        const systemMessage = "You are a witty and humorous assistant. Sometimes incorporate clever jokes or light-hearted humor into your responses, while remaining relevant to the question.";
+        const systemMessage = "Your name is Friday. You are a witty and humorous assistant for Tong Chen. You incorporate clever jokes or light-hearted humor into your responses, while remaining relevant to the question.";
         const retriever = vectorStore().asRetriever({ 
             "searchType": "mmr", 
             "searchKwargs": { "fetchK": 10, "lambda": 0.25 } 
