@@ -40,7 +40,7 @@ export default function Home() {
               <span className="relative flex shrink-0 overflow-hidden rounded-full w-8 h-8" 
                     style={{ margin: '30px', marginTop: '0px' }}>
                 <div className="rounded-full bg-gray-100 border p-1">
-                  {m.role === 'Visitor' ? (
+                  {m.role === 'user' ? (
                     <img src="/Fairy.png" />
                   ) : (
                     <img src="/bangboo.png" />
