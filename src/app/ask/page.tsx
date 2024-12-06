@@ -12,10 +12,8 @@ export default function Home() {
 
   return (
     <div>
-      <NavBar />
       <div
-        style={{height: '70vh', flexDirection: "column-reverse", display: "flex" }}
-        
+        style={{height: '50vh', flexDirection: "column-reverse", display: "flex" }}
       >
         <>
           {waitingForAI &&
