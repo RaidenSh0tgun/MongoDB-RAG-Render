@@ -27,7 +27,7 @@ export default function Home() {
         <>
           {messages.length == 0 &&
             (
-              <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+              <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'end', justifyContent: 'center' }}>
                 <img style={{ width: "25%", marginBottom: "1%" }} src='/Friday_v2.png' />
               </div>
             )
@@ -35,7 +35,7 @@ export default function Home() {
         </>
         <div className="pr-4 messages">
           {messages.map(m => (
-            <div key={m.id} className="flex gap-1 my-2 text-gray-600 text-sm flex-1">
+            <div key={m.id} className="flex gap-3 my-4 text-gray-600 text-sm flex-1">
               <span className="relative flex shrink-0 overflow-hidden rounded-full w-6 h-6" 
                     style={{ margin: '30px', marginTop: '0px' }}>
                 <div className="rounded-full bg-gray-100 border p-1">
