@@ -9,6 +9,7 @@ import { NextResponse } from 'next/server';
 import { BufferMemory } from 'langchain/memory';
 import { ChatPromptTemplate, MessagesPlaceholder } from 'langchain/prompts';
 import { SystemMessagePromptTemplate, HumanMessagePromptTemplate } from 'langchain/prompts';
+import { StringOutputParser } from "@langchain/core/output_parsers";
 
 
 
