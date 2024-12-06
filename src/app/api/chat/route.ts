@@ -22,7 +22,6 @@ export async function POST(req: Request) {
         
 
         const llm = new ChatOpenAI({
-            model: "gpt-4o-mini",
             temperature: 0.8,
             streaming: true,
             callbacks: [handlers],
