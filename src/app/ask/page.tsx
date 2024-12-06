@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <div>
       <div
-        style={{height: '50vh', flexDirection: "column-reverse", display: "flex" }}
+        style={{height: '70vh', flexDirection: "column-reverse", display: "flex" }}
         
       >
         <>
