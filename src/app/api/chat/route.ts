@@ -31,7 +31,7 @@ export async function POST(req: Request) {
             outputParser: new StringOutputParser(),
         });
         ragChain.invoke({
-            question:: question,
+            question: question,
             
         })
 
