@@ -30,8 +30,7 @@ export async function POST(req: Request) {
             "searchType": "mmr", 
             "searchKwargs": { "fetchK": 10, "lambda": 0.25 } 
         })
-        const retrievedDocs = await retriever.invoke(question)
-        const context = retrievedDocs.map(doc => doc.content).join("\n");
+        const context = await retriever.invoke(question)
         const ragChain = await createStuffDocumentsChain({
             llm,
             prompt,
