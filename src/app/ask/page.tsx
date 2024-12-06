@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <div>
       <div
-        style={{height: '30vh', flexDirection: "column-reverse", display: "flex" }}
+        style={{height: '60vh', flexDirection: "column-reverse", display: "flex" }}
       >
         <>
           {waitingForAI &&
@@ -37,7 +37,7 @@ export default function Home() {
         <div className="pr-4 messages">
           {messages.map(m => (
             <div key={m.id} className="flex gap-3 my-4 text-gray-600 text-sm flex-1">
-              <span className="relative flex shrink-0 overflow-hidden rounded-full w-8 h-8" 
+              <span className="relative flex shrink-0 overflow-hidden rounded-full w-6 h-6" 
                     style={{ margin: '30px', marginTop: '0px' }}>
                 <div className="rounded-full bg-gray-100 border p-1">
                   {m.role === 'user' ? (
