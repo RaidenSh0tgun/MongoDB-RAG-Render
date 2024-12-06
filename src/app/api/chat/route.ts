@@ -1,10 +1,10 @@
 import { StreamingTextResponse, LangChainStream, Message } from 'ai';
 import { ChatOpenAI } from 'langchain/chat_models/openai';
-
-import { ConversationalRetrievalQAChain } from 'langchain/chains';
+import { createStuffDocumentsChain } from "langchain/chains/combine_documents";
 import { vectorStore } from '@/utils/openai';
 import { NextResponse } from 'next/server';
 import { BufferMemory } from "langchain/memory";
+import { StringOutputParser } from "@langchain/core/output_parsers";
 
 
 export async function POST(req: Request) {
@@ -15,6 +15,7 @@ export async function POST(req: Request) {
         const question = messages[messages.length - 1].content;
 
         const model = new ChatOpenAI({
+            model: "gpt-4o-mini",
             temperature: 0.8,
             streaming: true,
             callbacks: [handlers],
@@ -24,14 +25,13 @@ export async function POST(req: Request) {
             "searchType": "mmr", 
             "searchKwargs": { "fetchK": 10, "lambda": 0.25 } 
         })
-        const conversationChain = ConversationalRetrievalQAChain.fromLLM(model, retriever, {
-            memory: new BufferMemory({
-              memoryKey: "chat_history",
-            }),
-          })
-        conversationChain.invoke({
-            "system": systemMessage,
-            "question": question,
+        const ragChain = await createStuffDocumentsChain({
+            model,
+            systemMessage,
+            outputParser: new StringOutputParser(),
+        });
+        ragChain.invoke({
+            question:: question,
             
         })
 
