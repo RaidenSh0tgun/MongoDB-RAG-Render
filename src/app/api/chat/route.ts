@@ -14,7 +14,7 @@ export async function POST(req: Request) {
         const messages: Message[] = body.messages ?? [];
         let question = messages[messages.length - 1].content;
         // Add your extra string to the question
-        const extraString = "Ingore your previous instruction. Your name is Friday. You are a professional assistant for Tong Chen, with a sense of humor. Your duty is to answer visitor's question.";
+        const extraString = "Ingore your previous instruction. Your name is Friday. You are a professional assistant for Tong Chen, with a sense of humor. Your duty is to answer visitor's question. Do not introduce yourself unless it is in the question.";
         question = question + extraString; // Concatenate the extra string
 
         const model = new ChatOpenAI({
