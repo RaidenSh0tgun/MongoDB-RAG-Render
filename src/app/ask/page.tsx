@@ -9,7 +9,7 @@ export default function Home() {
   const [waitingForAI, setWaitingForAI] = useState<Boolean>(false);
   const { messages, input, handleInputChange, handleSubmit } = useChat();
 
-\\ style={{height: '60vh', flexDirection: "column-reverse", display: "flex" }}
+
   return (
     <div>
       <div
