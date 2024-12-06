@@ -1,6 +1,9 @@
 import { StreamingTextResponse, LangChainStream, Message } from 'ai';
 import { ChatOpenAI } from 'langchain/chat_models/openai';
-import { RetrievalQAChain } from 'langchain/chains';
+import {
+  RunnableSequence,
+  RunnablePassthrough,
+} from "@langchain/core/runnables";
 import { vectorStore } from '@/utils/openai';
 import { NextResponse } from 'next/server';
 import { BufferMemory } from 'langchain/memory';
@@ -17,7 +20,7 @@ export async function POST(req: Request) {
         const question = messages[messages.length - 1].content;
         
 
-        const model = new ChatOpenAI({
+        const llm = new ChatOpenAI({
             model: "gpt-4o-mini",
             temperature: 0.8,
             streaming: true,
@@ -44,10 +47,17 @@ export async function POST(req: Request) {
         ]);
 
         // Create the RetrievalQA chain
-        const qaChain = RetrievalQAChain.fromLLM(model, retriever, {
-            prompt,
-            memory,
-        });
+        const qaChain = RunnableSequence.from([
+              {
+                context: retriever,
+                question: new RunnablePassthrough(),
+                memory: memory
+              },
+              prompt,
+              llm,
+              new StringOutputParser(),
+        ]);
+
 
         // Invoke the chain with the user's question
         const response = await qaChain.invoke({
