@@ -19,7 +19,7 @@ export async function POST(req: Request) {
             streaming: true,
             callbacks: [handlers],
         });
-
+        const systemMessage = "You are a witty and humorous assistant. Sometimes incorporate clever jokes or light-hearted humor into your responses, while remaining relevant to the question.";
         const retriever = vectorStore().asRetriever({ 
             "searchType": "mmr", 
             "searchKwargs": { "fetchK": 10, "lambda": 0.25 } 
@@ -30,7 +30,9 @@ export async function POST(req: Request) {
             }),
           })
         conversationChain.invoke({
-            "question": question
+            "system": systemMessage,
+            "question": question,
+            
         })
 
         return new StreamingTextResponse(stream);
