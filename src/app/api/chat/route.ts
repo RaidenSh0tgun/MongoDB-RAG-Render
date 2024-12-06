@@ -14,20 +14,20 @@ export async function POST(req: Request) {
         const messages: Message[] = body.messages ?? [];
         const question = messages[messages.length - 1].content;
 
-        const model = new ChatOpenAI({
+        const llm = new ChatOpenAI({
             model: "gpt-4o-mini",
             temperature: 0.8,
             streaming: true,
             callbacks: [handlers],
         });
-        const systemMessage = "Your name is Friday. You are a witty and humorous assistant for Tong Chen. You incorporate clever jokes or light-hearted humor into your responses, while remaining relevant to the question.";
+        const prompt = "Your name is Friday. You are a witty and humorous assistant for Tong Chen. You incorporate clever jokes or light-hearted humor into your responses, while remaining relevant to the question.";
         const retriever = vectorStore().asRetriever({ 
             "searchType": "mmr", 
             "searchKwargs": { "fetchK": 10, "lambda": 0.25 } 
         })
         const ragChain = await createStuffDocumentsChain({
-            model,
-            systemMessage,
+            llm,
+            prompt,
             outputParser: new StringOutputParser(),
         });
         ragChain.invoke({
