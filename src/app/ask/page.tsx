@@ -20,22 +20,17 @@ export default function Home() {
         backgroundImage: 'url("/background.png")', // Specify the path to your image
         backgroundSize: 'cover', // Ensures the image covers the entire div
         backgroundPosition: 'center', // Centers the background image
-        backgroundRepeat: 'no-repeat' // Ensures the image doesn't repeat
+        backgroundRepeat: 'no-repeat', // Ensures the image doesn't repeat
+        padding: '20px',
   }}
       >
         <>
-          {waitingForAI &&
-            (
-              <div className="loading">
-                <img src='/1484.gif'></img>
-              </div>
-            )}
         </>
         <>
           {messages.length == 0 &&
             (
               <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
-                <img style={{ width: "25%", marginBottom: "2%" }} src='/Friday.png' />
+                <img style={{ width: "15%", marginBottom: "2%" }} src='/Friday.png' />
                 <span style={{ marginBottom: '2%', fontSize: '60px', justifySelf: 'center' }}>+</span>
                 <img style={{ width: "8%", marginBottom: "2%" }} src='/openAI.svg' />
               </div>
