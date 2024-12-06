@@ -44,7 +44,7 @@ export async function POST(req: Request) {
                 "Your name is Friday. You are a witty and humorous assistant for Tong Chen. You incorporate clever jokes or light-hearted humor into your responses. Use the provided documents and prior chat history to answer the user's question."
             ),
             // new MessagesPlaceholder("chat_history"), // Placeholder for conversation history
-            new HumanMessagePromptTemplate.fromTemplate("Context: {context}\nQuestion: {question}"), // User's question
+            HumanMessagePromptTemplate.fromTemplate("Context: {context}\nQuestion: {question}"), // User's question
         ]);
 
         // Create the RetrievalQA chain
