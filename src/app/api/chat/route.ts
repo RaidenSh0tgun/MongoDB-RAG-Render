@@ -51,7 +51,6 @@ export async function POST(req: Request) {
               {
                 context: retriever,
                 question: new RunnablePassthrough(),
-                memory: memory
               },
               prompt,
               llm,
