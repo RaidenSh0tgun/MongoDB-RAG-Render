@@ -21,7 +21,6 @@ export async function POST(req: Request) {
         const messages: Message[] = body.messages ?? [];
         const question = messages[messages.length - 1].content;
         
-
         const llm = new ChatOpenAI({
             temperature: 0.8,
             streaming: true,
@@ -57,12 +56,12 @@ export async function POST(req: Request) {
               llm,
               new StringOutputParser(),
         ]);
-
+        const context = retriever.invoke(question)
 
         // Invoke the chain with the user's question
         const response = await qaChain.invoke({
             question: question,
-            context: await retriever.invoke(question),
+            context: context,
         });
 
         return new StreamingTextResponse(stream);
