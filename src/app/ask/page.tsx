@@ -13,7 +13,16 @@ export default function Home() {
   return (
     <div>
       <div
-        style={{height: '60vh', flexDirection: "column-reverse", display: "flex" }}
+        \\ style={{height: '60vh', flexDirection: "column-reverse", display: "flex" }}
+        style={{
+        height: '60vh',
+        flexDirection: "column-reverse",
+        display: "flex",
+        backgroundImage: 'url("/background.png")', // Specify the path to your image
+        backgroundSize: 'cover', // Ensures the image covers the entire div
+        backgroundPosition: 'center', // Centers the background image
+        backgroundRepeat: 'no-repeat' // Ensures the image doesn't repeat
+  }}
       >
         <>
           {waitingForAI &&
@@ -27,7 +36,7 @@ export default function Home() {
           {messages.length == 0 &&
             (
               <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
-                <img style={{ width: "25%", marginBottom: "2%" }} src='/UNSPAA_S_RED_BLACK.png' />
+                <img style={{ width: "25%", marginBottom: "2%" }} src='/Friday.png' />
                 <span style={{ marginBottom: '2%', fontSize: '60px', justifySelf: 'center' }}>+</span>
                 <img style={{ width: "8%", marginBottom: "2%" }} src='/openAI.svg' />
               </div>
