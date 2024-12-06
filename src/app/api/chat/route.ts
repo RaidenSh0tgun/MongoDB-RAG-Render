@@ -5,6 +5,7 @@ import { vectorStore } from '@/utils/openai';
 import { NextResponse } from 'next/server';
 import { BufferMemory } from "langchain/memory";
 import { StringOutputParser } from "@langchain/core/output_parsers";
+import { BasePromptTemplate } from 'langchain/prompts';
 
 
 export async function POST(req: Request) {
@@ -13,18 +14,33 @@ export async function POST(req: Request) {
         const body = await req.json();
         const messages: Message[] = body.messages ?? [];
         const question = messages[messages.length - 1].content;
-
+        
+        // Define dynamic prompt template
+        class MyCustomPromptTemplate extends BasePromptTemplate {
+            getPrompt(values) {
+                return `Your name is Friday. You are a witty and humorous assistant for Tong Chen. You incorporate clever jokes or light-hearted humor into your responses, while remaining relevant to the question:
+        
+        Context: ${values.context}
+        
+        Question: ${values.question}
+        
+        Answer:`;
+            }
+        }
         const llm = new ChatOpenAI({
             model: "gpt-4o-mini",
             temperature: 0.8,
             streaming: true,
             callbacks: [handlers],
         });
-        const prompt = "Your name is Friday. You are a witty and humorous assistant for Tong Chen. You incorporate clever jokes or light-hearted humor into your responses, while remaining relevant to the question.";
+        const promptTemplate = new MyCustomPromptTemplate();
+        const prompt = promptTemplate.getPrompt({ context, question });
         const retriever = vectorStore().asRetriever({ 
             "searchType": "mmr", 
             "searchKwargs": { "fetchK": 10, "lambda": 0.25 } 
         })
+        const retrievedDocs = await retriever.invoke(question)
+        const context = retrievedDocs.map(doc => doc.content).join("\n");
         const ragChain = await createStuffDocumentsChain({
             llm,
             prompt,
@@ -32,6 +48,7 @@ export async function POST(req: Request) {
         });
         ragChain.invoke({
             question: question,
+            context: context,
             
         })
 
