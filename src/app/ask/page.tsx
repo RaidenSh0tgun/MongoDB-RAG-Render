@@ -29,7 +29,7 @@ export default function Home() {
           {messages.length == 0 &&
             (
               <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
-                <img style={{ width: "25%", marginBottom: "2%" }} src='/MongoDB_White.svg' />
+                <img style={{ width: "25%", marginBottom: "2%" }} src='/UNSPAA_S_RED_BLACK.png' />
                 <span style={{ marginBottom: '2%', fontSize: '40px', justifySelf: 'center' }}>+</span>
                 <img style={{ width: "8%", marginBottom: "2%" }} src='/openAI.svg' />
               </div>
@@ -64,7 +64,7 @@ export default function Home() {
               value={input}
               onChange={handleInputChange}
               className="flex h-10 w-full rounded-md border border-[#e5e7eb] px-3 py-2 text-sm placeholder-[#6b7280] focus:outline-none focus:ring-2 focus:ring-[#9ca3af] disabled:cursor-not-allowed disabled:opacity-50 text-[#030712] focus-visible:ring-offset-2"
-              placeholder="Ask what you have in mind"
+              placeholder="What do you want to know about Tong Chen?"
             />
             <button
               type="submit"
