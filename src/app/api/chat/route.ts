@@ -5,7 +5,7 @@ import { vectorStore } from '@/utils/openai';
 import { NextResponse } from 'next/server';
 import { BufferMemory } from "langchain/memory";
 import { StringOutputParser } from "@langchain/core/output_parsers";
-import { BasePromptTemplate } from 'langchain/prompts';
+import { ChatPromptTemplate } from 'langchain/prompts';
 
 
 export async function POST(req: Request) {
