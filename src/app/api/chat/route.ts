@@ -1,4 +1,5 @@
-import { StreamingTextResponse, LangChainStream, Message } from 'ai';
+// import { StreamingTextResponse, LangChainStream, Message } from 'ai';
+import { streamText, LangChainStream, Message } from 'ai';
 import { ChatOpenAI } from 'langchain/chat_models/openai';
 import {
   RunnableSequence,
@@ -60,11 +61,11 @@ export async function POST(req: Request) {
 
         // Invoke the chain with the user's question
         const response = await qaChain.invoke({
-            question,
+            question: question
             context: await retriever.invoke(question),
         });
 
-        return new StreamingTextResponse(stream);
+        return new streamText.toDataStreamResponse(stream);
     }
     catch (e) {
         return NextResponse.json({ message: 'Error Processing' }, { status: 500 });
