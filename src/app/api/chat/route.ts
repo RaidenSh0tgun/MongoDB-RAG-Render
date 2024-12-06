@@ -43,8 +43,8 @@ export async function POST(req: Request) {
             SystemMessagePromptTemplate.fromTemplate(
                 "Your name is Friday. You are a witty and humorous assistant for Tong Chen. You incorporate clever jokes or light-hearted humor into your responses. Use the provided documents and prior chat history to answer the user's question."
             ),
-            new MessagesPlaceholder("chat_history"), // Placeholder for conversation history
-            HumanMessagePromptTemplate.fromTemplate("{question}"), // User's question
+            // new MessagesPlaceholder("chat_history"), // Placeholder for conversation history
+            new HumanMessagePromptTemplate.fromTemplate("Context: {context}\nQuestion: {question}"), // User's question
         ]);
 
         // Create the RetrievalQA chain
@@ -62,6 +62,7 @@ export async function POST(req: Request) {
         // Invoke the chain with the user's question
         const response = await qaChain.invoke({
             question,
+            context: await retriever.invoke(question),
         });
 
         return new StreamingTextResponse(stream);
