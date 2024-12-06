@@ -23,7 +23,9 @@ export async function POST(req: Request) {
             callbacks: [handlers],
         });
         const prompt = ChatPromptTemplate.fromMessages([
-          ["system", "Your name is Friday. You are a witty and humorous assistant for Tong Chen. You incorporate clever jokes or light-hearted humor into your responses, while remaining relevant to the question."],
+          ("system", "Your name is Friday. You are a witty and humorous assistant for Tong Chen. You incorporate clever jokes or light-hearted humor into your responses, while remaining relevant to the question."],
+        ),
+          ("human", "{question}")
         ]);
 
         const retriever = vectorStore().asRetriever({ 
