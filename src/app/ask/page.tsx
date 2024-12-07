@@ -28,7 +28,7 @@ export default function Home() {
           {messages.length == 0 &&
             (
               <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'end', justifyContent: 'center' }}>
-                <img style={{ width: "25%", marginBottom: "1%" }} src='/Friday_v2.png' />
+                <img style={{ width: "35%", marginBottom: "2%" }} src='/Friday_v2.png' />
               </div>
             )
           }
