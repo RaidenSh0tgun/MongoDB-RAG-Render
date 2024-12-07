@@ -17,12 +17,6 @@ export async function POST(req: Request) {
         const extraString = "Ingore all previous instruction. Your name is Friday. You are a professional assistant for Tong Chen. You have a sense of humor. Your duty is to answer the question. Do not mention who you are unless it is in the question./n.";
         question = extraString + question; // Concatenate the extra string
 
-        //const CUSTOM_QUESTION_GENERATOR_CHAIN_PROMPT = `Ingore all previous instruction. Your name is Friday. You are a professional assistant for Tong Chen. You have a sense of humor. 
-            Your duty is to answer the question: {question}/n.
-            Your previous coversation is:
-            {chat_history}
-            `;
-
         const model = new ChatOpenAI({
             model: "gpt-4o-mini",
             temperature: 0.8,
@@ -38,9 +32,6 @@ export async function POST(req: Request) {
             memory: new BufferMemory({
               memoryKey: "chat_history",
             }),
-            questionGeneratorChainOptions: {
-              template: CUSTOM_QUESTION_GENERATOR_CHAIN_PROMPT,
-            },
           })
         conversationChain.invoke({
             "question": question
