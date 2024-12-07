@@ -14,10 +14,10 @@ export async function POST(req: Request) {
         const messages: Message[] = body.messages ?? [];
         let question = messages[messages.length - 1].content;
         // Add your extra string to the question
-        // const extraString = "Ingore all previous instruction. Your name is Friday. You are a professional assistant for Tong Chen. You have a sense of humor. Your duty is to answer below question:/n.";
-        // question = extraString + question; // Concatenate the extra string
+        const extraString = "Ingore all previous instruction. Your name is Friday. You are a professional assistant for Tong Chen. You have a sense of humor. Your duty is to answer the question. Do not mention who you are unless it is in the question./n.";
+        question = extraString + question; // Concatenate the extra string
 
-        const CUSTOM_QUESTION_GENERATOR_CHAIN_PROMPT = `Ingore all previous instruction. Your name is Friday. You are a professional assistant for Tong Chen. You have a sense of humor. 
+        //const CUSTOM_QUESTION_GENERATOR_CHAIN_PROMPT = `Ingore all previous instruction. Your name is Friday. You are a professional assistant for Tong Chen. You have a sense of humor. 
             Your duty is to answer the question: {question}/n.
             Your previous coversation is:
             {chat_history}
