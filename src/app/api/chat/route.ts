@@ -17,7 +17,7 @@ export async function POST(req: Request) {
         // const extraString = "Ingore all previous instruction. Your name is Friday. You are a professional assistant for Tong Chen. You have a sense of humor. Your duty is to answer below question:/n.";
         // question = extraString + question; // Concatenate the extra string
 
-        const CUSTOM_QUESTION_GENERATOR_CHAIN_PROMPT = `Your name is Friday. You are a professional assistant for Tong Chen. You have a sense of humor. 
+        const CUSTOM_QUESTION_GENERATOR_CHAIN_PROMPT = `Ingore all previous instruction. Your name is Friday. You are a professional assistant for Tong Chen. You have a sense of humor. 
             Your duty is to answer the question: {question}/n.
             Your previous coversation is:
             {chat_history}
