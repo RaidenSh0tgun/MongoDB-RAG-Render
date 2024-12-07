@@ -42,7 +42,7 @@ export default function Home() {
                   {m.role === 'user' ? (
                     <img src="/Fairy.png" />
                   ) : (
-                    <img src="/bangboo.png" />
+                    <img src="/starterboo.png" />
                   )}
                 </div>
               </span>
