@@ -28,8 +28,8 @@ export default function Home() {
           {messages.length == 0 &&
             (
               <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'end', justifyContent: 'center' }}>
-                <img style={{ width: "35%", marginBottom: "2%" }} src='/Friday_v1.1.png' />
-                <img style={{ width: "30%", marginBottom: "2%" }} src='/openAI.svg' />
+                <img style={{ width: "25%", marginBottom: "2%" }} src='/Friday_v1.1.png' />
+                <img style={{ width: "15%", marginBottom: "2%" }} src='/hi.png' />
               </div>
             )
           }
@@ -39,11 +39,11 @@ export default function Home() {
             <div key={m.id} className="flex gap-3 my-4 text-gray-600 text-lg flex-1">
               <span className="relative flex shrink-0 overflow-hidden rounded-full w-6 h-6" 
                     style={{ margin: '60px', marginTop: '0px' }}>
-                <div className="rounded-full bg-gray-100 border p-1">
+                <div className="rounded-full bg-gray-100 border p-1 w-6 h-6">
                   {m.role === 'user' ? (
-                    <img src="/Fairy.png" style={{ width: '70px', height: '70px' }}/>
+                    <img src="/Fairy.png" />
                   ) : (
-                    <img src="/starterboo.png" style={{ width: '70px', height: '70px' }}/>
+                    <img src="/starterboo.png" />
                   )}
                 </div>
               </span>
