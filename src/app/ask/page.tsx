@@ -28,7 +28,8 @@ export default function Home() {
           {messages.length == 0 &&
             (
               <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'end', justifyContent: 'center' }}>
-                <img style={{ width: "35%", marginBottom: "2%" }} src='/Friday_v2.png' />
+                <img style={{ width: "35%", marginBottom: "2%" }} src='/Friday_v1.1.png' />
+                <img style={{ width: "30%", marginBottom: "2%" }} src='/openAI.svg' />
               </div>
             )
           }
@@ -40,9 +41,9 @@ export default function Home() {
                     style={{ margin: '60px', marginTop: '0px' }}>
                 <div className="rounded-full bg-gray-100 border p-1">
                   {m.role === 'user' ? (
-                    <img src="/Fairy.png" />
+                    <img src="/Fairy.png" style={{ width: '70px', height: '70px' }}/>
                   ) : (
-                    <img src="/starterboo.png" />
+                    <img src="/starterboo.png" style={{ width: '70px', height: '70px' }}/>
                   )}
                 </div>
               </span>
@@ -60,14 +61,14 @@ export default function Home() {
             <input
               value={input}
               onChange={handleInputChange}
-              className="flex h-20 w-full rounded-md border border-[#e5e7eb] px-4 py-2 text-base placeholder-[#6b7280] focus:outline-none focus:ring-2 focus:ring-[#9ca3af] disabled:cursor-not-allowed disabled:opacity-50 text-[#030712] focus-visible:ring-offset-2"
+              className="flex h-20 w-full rounded-md border border-[#e5e7eb] px-4 py-2 text-sm placeholder-[#6b7280] focus:outline-none focus:ring-2 focus:ring-[#9ca3af] disabled:cursor-not-allowed disabled:opacity-50 text-[#030712] focus-visible:ring-offset-2"
               placeholder="What do you want to know about Tong Chen?"
-              style={{ fontSize: '18px' }}
+              style={{ fontSize: '16px' }}
             />
             <button
               type="submit"
-              className="inline-flex items-center justify-center rounded-md text-base font-medium text-[#f9fafb] disabled:pointer-events-none disabled:opacity-50 bg-black hover:bg-[#111827E6] h-10 px-4 py-2"
-              style={{ fontSize: '18px' }}
+              className="inline-flex items-center justify-center rounded-md text-sm font-medium text-[#f9fafb] disabled:pointer-events-none disabled:opacity-50 bg-black hover:bg-[#111827E6] h-10 px-4 py-2"
+              style={{ fontSize: '16px' }}
               >
               Send
             </button>
