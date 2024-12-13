@@ -34,7 +34,7 @@ export async function POST(req: Request) {
             "searchKwargs": { "fetchK": 10, "lambda": 0.25 } 
         })
         const conversationChain = ConversationalRetrievalQAChain.fromLLM(model, retriever, memory ,
-          })
+          )
         conversationChain.invoke({
             "question": question
         })
