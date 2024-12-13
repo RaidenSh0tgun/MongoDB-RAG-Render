@@ -19,7 +19,6 @@ export async function POST(req: Request) {
         
         const memory = new BufferMemory({
            memoryKey: "chat_history",
-           returnMessages: true,
         });
         
         const model = new ChatOpenAI({
