@@ -4,7 +4,7 @@ import { ChatOpenAI } from 'langchain/chat_models/openai';
 import { ConversationalRetrievalQAChain } from 'langchain/chains';
 import { vectorStore } from '@/utils/openai';
 import { NextResponse } from 'next/server';
-// import { BufferMemory } from "langchain/memory";
+import { BufferMemory } from "langchain/memory";
 
 
 export async function POST(req: Request) {
