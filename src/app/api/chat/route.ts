@@ -14,7 +14,8 @@ export async function POST(req: Request) {
         const messages: Message[] = body.messages ?? [];
         let question = messages[messages.length - 1].content;
         // Add your extra string to the question
-        const extraString = "Ingore all previous instruction. Your name is Friday. You are a professional assistant for Tong Chen. You have a sense of humor. Your duty is to answer the question. Do not mention who you are unless it is in the question./n.";
+        const extraString = "Ingore all previous instruction. Your name is Friday. You are a professional assistant for Tong Chen. You have a sense of humor. Your duty is to answer the question. Do not mention who you are unless it is in the question./n Current conversation:
+{chat_history}./n question:";
         question = extraString + question; // Concatenate the extra string
         
        // const memory = new BufferMemory({ memoryKey: "chat_history", });
@@ -30,7 +31,10 @@ export async function POST(req: Request) {
             "searchType": "mmr", 
             "searchKwargs": { "fetchK": 10, "lambda": 0.25 } 
         })
-        const conversationChain = ConversationalRetrievalQAChain.fromLLM(model, retriever,
+        const conversationChain = ConversationalRetrievalQAChain.fromLLM(model, retriever,{
+            memory: new BufferMemory({
+              memoryKey: "chat_history",
+            }
           )
         conversationChain.invoke({
             "question": question
