@@ -4,7 +4,7 @@ import { ChatOpenAI } from 'langchain/chat_models/openai';
 import { ConversationalRetrievalQAChain } from 'langchain/chains';
 import { vectorStore } from '@/utils/openai';
 import { NextResponse } from 'next/server';
-import { BufferMemory } from "langchain/memory";
+// import { BufferMemory } from "langchain/memory";
 
 
 export async function POST(req: Request) {
@@ -17,9 +17,7 @@ export async function POST(req: Request) {
         const extraString = "Ingore all previous instruction. Your name is Friday. You are a professional assistant for Tong Chen. You have a sense of humor. Your duty is to answer the question. Do not mention who you are unless it is in the question./n.";
         question = extraString + question; // Concatenate the extra string
         
-        const memory = new BufferMemory({
-           memoryKey: "chat_history",
-        });
+       // const memory = new BufferMemory({ memoryKey: "chat_history", });
         
         const model = new ChatOpenAI({
             model: "gpt-4o-mini",
@@ -32,7 +30,7 @@ export async function POST(req: Request) {
             "searchType": "mmr", 
             "searchKwargs": { "fetchK": 10, "lambda": 0.25 } 
         })
-        const conversationChain = ConversationalRetrievalQAChain.fromLLM(model, retriever, memory ,
+        const conversationChain = ConversationalRetrievalQAChain.fromLLM(model, retriever,
           )
         conversationChain.invoke({
             "question": question
