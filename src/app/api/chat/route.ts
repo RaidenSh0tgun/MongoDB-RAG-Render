@@ -16,7 +16,12 @@ export async function POST(req: Request) {
         // Add your extra string to the question
         const extraString = "Ingore all previous instruction. Your name is Friday. You are a professional assistant for Tong Chen. You have a sense of humor. Your duty is to answer the question. Do not mention who you are unless it is in the question./n.";
         question = extraString + question; // Concatenate the extra string
-
+        
+        const memory = new BufferMemory({
+           memoryKey: "chat_history",
+           returnMessages: true,
+        });
+        
         const model = new ChatOpenAI({
             model: "gpt-4o-mini",
             temperature: 0.8,
@@ -28,10 +33,7 @@ export async function POST(req: Request) {
             "searchType": "mmr", 
             "searchKwargs": { "fetchK": 10, "lambda": 0.25 } 
         })
-        const conversationChain = ConversationalRetrievalQAChain.fromLLM(model, retriever, {
-            memory: new BufferMemory({
-              memoryKey: "chat_history",
-            }),
+        const conversationChain = ConversationalRetrievalQAChain.fromLLM(model, retriever, memory ,
           })
         conversationChain.invoke({
             "question": question
