@@ -33,8 +33,8 @@ export async function POST(req: Request) {
         const conversationChain = ConversationalRetrievalQAChain.fromLLM(model, retriever,{
             memory: new BufferMemory({
               memoryKey: "chat_history",
-            }
-          )
+            }),
+          })
         conversationChain.invoke({
             "question": question
         })
